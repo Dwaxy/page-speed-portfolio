@@ -1,16 +1,18 @@
 <template>
-  <h1>Project Page</h1>
+  <div>
+    <ProjectDetails />
+  </div>
 </template>
 
 <script>
+import ProjectDetails from "../components/projectDetails/ProjectDetails.vue";
 export default {
-name: 'ProjectPage',
-    components: {
-
-    }
-}
+  name: "ProjectPage",
+  components: {
+    ProjectDetails
+  }
+};
 </script>
 
-<style>
-
+<style lang ="scss">
 </style>
