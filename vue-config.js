@@ -9,15 +9,13 @@ module.exports = {
       }
     ]
   },
-  chainWebpack: config => {
     plugins: [
       new GoogleFontsPlugin({
         fonts: [
-          { family: 'Source Sans Pro' },
-          { family: 'Open Sans' },
-          { family: 'Bitter' }
+          { family: "Source Sans Pro" },
+          { family: "Open Sans" },
+          { family: "Bitter" }
         ]
       })
-    ];
-  }
+    ]
 };
