@@ -41,7 +41,31 @@ const router = new VueRouter({
   mode: 'history'
 });
 
+Vue.use(VueRouter);
+Vue.use(VueResource);
+
+const routes = [{
+  path: '/',
+  component: IndexPage
+}, 
+{
+  path: '/profile',
+  component: ProfilePage
+},
+{
+  path: '/profile/:project',
+  component: ProjectPage,
+  props: true //this enables route params
+},
+];
+
+const router = new VueRouter({
+  routes,
+  mode: 'history'
+  })
+
 new Vue({
   render: h => h(App),
   router
 }).$mount('#app');
+
