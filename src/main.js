@@ -20,30 +20,6 @@ Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.use(VueRouter);
 Vue.use(VueResource);
 
-const routes = [
-  {
-    path: '/',
-    component: IndexPage
-  },
-  {
-    path: '/profile',
-    component: ProfilePage
-  },
-  {
-    path: '/profile/:project',
-    component: ProjectPage,
-    props: true //this enables route params
-  }
-];
-
-const router = new VueRouter({
-  routes,
-  mode: 'history'
-});
-
-Vue.use(VueRouter);
-Vue.use(VueResource);
-
 const routes = [{
   path: '/',
   component: IndexPage
