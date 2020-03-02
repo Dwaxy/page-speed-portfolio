@@ -1,5 +1,5 @@
 <template>
-<section class="about-me">
+  <section class="about-me">
     <hr />
     <div class="content">
       <div>
@@ -11,7 +11,7 @@
         </span>
       </div>
       <div>
-        <img src alt="profile picture" />
+        <img src="#" alt="profile picture" />
       </div>
     </div>
     <hr />
@@ -26,39 +26,43 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+// Global variables
 $global-gutters: 1.5rem;
 $grey: #a0a1a4;
 $tablet: 700px;
 $desktop: 1440px;
 
-img {
-  display: none;
-
-  @media screen and (min-width: $desktop) {
-    display: block;
-    padding-right: $global-gutters;
-    width: 104px;
+// Scoped styles
+.about-me {
+  hr {
+    height: 0.031em;
+    color: $grey;
+    background-color: $grey;
+    border-color: $grey;
   }
-}
 
-hr {
-  border: none;
-  height: 0.031em;
-  color: $grey;
-  background-color: $grey;
-}
+  .content {
+    max-width: 34.375em;
+    width: auto;
+    margin: 0 auto;
+    padding: $global-gutters 0;
 
-.content {
-  max-width: 34.375em;
-  width: auto;
-  margin: 0 auto;
-  padding: $global-gutters 0;
+    @media screen and (min-width: $desktop) {
+      max-width: 59.375em;
+      display: flex;
+      flex-direction: row-reverse;
+      padding: $global-gutters * 2 0;
+    }
 
-  @media screen and (min-width: $desktop) {
-    max-width: 59.375em;
-    display: flex;
-    flex-direction: row-reverse;
-    padding: $global-gutters * 2 0;
+    img {
+      display: none;
+
+      @media screen and (min-width: $desktop) {
+        display: block;
+        padding-right: $global-gutters;
+        width: 104px;
+      }
+    }
   }
 }
 </style>
