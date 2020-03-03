@@ -51,7 +51,6 @@ ul {
 }
 
 .project {
-
   @media screen and (min-width: $desktop) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
