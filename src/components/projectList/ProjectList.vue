@@ -51,12 +51,7 @@ ul {
 }
 
 .project {
-  max-width: 45em;
-  width: auto;
-  margin: 0 auto;
-
   @media screen and (min-width: $desktop) {
-    max-width: 75rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-column-gap: $global-gutters * 2;
