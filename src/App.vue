@@ -35,11 +35,13 @@ $desktop: 1440px;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  }
 
   #app {
     padding: $global-gutters;
     background-color: $black;
     color: $grey;
+    }
 
     section {
       max-width: 45rem;
@@ -114,6 +116,5 @@ $desktop: 1440px;
         font-size: 1.125rem;
       }
     }
-  }
-}
+
 </style>

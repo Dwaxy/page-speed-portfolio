@@ -73,16 +73,7 @@ ol {
   list-style: decimal inside;
 }
 
-.secondary {
-  max-width: 45em;
-  width: auto;
-  margin: 0 auto;
-}
-
 .goals, .pains {
-  max-width: 45rem;
-  width: auto;
-  margin: 0 auto;
   @media screen and (min-width: $tablet) {
     display: flex;
     flex-direction: row-reverse;
