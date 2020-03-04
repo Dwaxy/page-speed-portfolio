@@ -1,5 +1,4 @@
 <template>
-
   <div id="app">
     <Header />
     <router-view></router-view>
@@ -21,6 +20,8 @@ export default {
 </script>
 
 <style lang="scss">
+
+// Global variables
 $global-gutters: 1.5rem;
 $white: #fcfdfd;
 $grey: #a0a1a4;
@@ -29,15 +30,18 @@ $accent: #8676ea;
 $tablet: 700px;
 $desktop: 1440px;
 
+// Global styles
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  }
 
   #app {
     padding: $global-gutters;
     background-color: $black;
     color: $grey;
+    }
 
     section {
       max-width: 45rem;
@@ -112,6 +116,5 @@ $desktop: 1440px;
         font-size: 1.125rem;
       }
     }
-  }
-}
+
 </style>
