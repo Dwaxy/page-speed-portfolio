@@ -10,30 +10,30 @@
 import HomeCard from "../components/home/HomeCard"
 export default {
 name: 'IndexPage',
-    components: {
-      HomeCard
-    },
-    data: function() {
-      return {
-        cards: [
-          {
-            name: "John",
-            imageUrl: "https://image.shutterstock.com/image-photo/portrait-smiling-red-haired-millennial-260nw-1194497251.jpg",
-            role: "Web Developer"
-          },
-          {
-            name: "John",
-            imageUrl: "https://image.shutterstock.com/image-photo/portrait-smiling-red-haired-millennial-260nw-1194497251.jpg",
-            role: "Web Developer"
-          },
-          {
-            name: "John",
-            imageUrl: "https://image.shutterstock.com/image-photo/portrait-smiling-red-haired-millennial-260nw-1194497251.jpg",
-            role: "Web Developer"
-          }
-        ]
-      }
+  components: {
+    HomeCard
+  },
+  data: function() {
+    return {
+      cards: [
+        {
+          name: "John",
+          imageUrl: "https://image.shutterstock.com/image-photo/portrait-smiling-red-haired-millennial-260nw-1194497251.jpg",
+          role: "Web Developer"
+        },
+        {
+          name: "Lea",
+          imageUrl: "https://image.shutterstock.com/image-photo/portrait-smiling-red-haired-millennial-260nw-1194497251.jpg",
+          role: "Web Designer"
+        },
+        {
+          name: "Max",
+          imageUrl: "https://image.shutterstock.com/image-photo/portrait-smiling-red-haired-millennial-260nw-1194497251.jpg",
+          role: "UI / UX Designer"
+        }
+      ]
     }
+  }
 }
 </script>
 
