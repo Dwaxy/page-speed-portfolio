@@ -22,16 +22,19 @@ Vue.use(VueResource);
 
 const routes = [{
   path: '/',
-  component: IndexPage
+  component: IndexPage,
+  name: "home"
 }, 
 {
   path: '/profile',
-  component: ProfilePage
+  component: ProfilePage,
+  name: "profile"
 },
 {
   path: '/profile/:project',
   component: ProjectPage,
-  props: true //this enables route params
+  props: true, //this enables route params
+  name: "project"
 },
 ];
 
