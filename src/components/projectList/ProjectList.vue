@@ -2,8 +2,8 @@
   <section class="projects">
     <ul>
       <li>
-        <div class="project">
-          <div class="header">
+        <div class="project-content">
+          <div class="project-header">
             <div>
               <h1>Project Title</h1>
             </div>
@@ -12,10 +12,10 @@
               <font-awesome-icon icon="trash-alt" class="admin-icon" />
             </div>
           </div>
-          <div class="image">
+          <div class="project-image">
             <img src alt="project image" />
           </div>
-          <div class="description">
+          <div class="project-description">
             <p>
               Vaporware DIY chartreuse activated charcoal 8-bit, polaroid lyft
               blue bottle lumbersexual aesthetic. Lo-fi seitan quinoa, yr schlitz
@@ -23,7 +23,7 @@
               viral heirloom pop-up VHS master cleanse shoreditch. Vice next level
               gochujang fam photo booth pug.
             </p>
-            <div class="button">
+            <div class="project-button">
               <a href="#">View More</a>
             </div>
           </div>
@@ -58,7 +58,24 @@ ul {
     grid-template-rows: repeat(2, auto);
   }
 
-  .header {
+  h1 {
+    line-height: 1;
+  }
+
+  .admin-icon {
+    margin-left: $global-gutters;
+    font-size: 1.125rem;
+
+    @media screen and (min-width: $tablet) {
+      font-size: 1.325rem;
+    }
+
+    @media screen and (min-width: $desktop) {
+      font-size: 1.625rem;
+    }
+  }
+
+  &-header {
     display: flex;
     justify-content: space-between;
 
@@ -66,33 +83,16 @@ ul {
       grid-column: 2/3;
       grid-row: 1/2;
     }
-
-    h1 {
-      line-height: 1;
-    }
-
-    .admin-icon {
-      margin-left: $global-gutters;
-      font-size: 1.125rem;
-
-      @media screen and (min-width: $tablet) {
-        font-size: 1.325rem;
-      }
-
-      @media screen and (min-width: $desktop) {
-        font-size: 1.625rem;
-      }
-    }
   }
 
-  .description {
+  &-description {
     @media screen and (min-width: $desktop) {
       grid-column: 2/3;
       grid-row: 2/3;
     }
   }
 
-  .image {
+  &-image {
     border: 1px solid white;
     margin: 0 0 $global-gutters 0;
 
@@ -103,7 +103,7 @@ ul {
     }
   }
 
-  .button {
+  &-button {
     display: flex;
     justify-content: flex-end;
   }

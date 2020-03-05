@@ -1,7 +1,7 @@
 <template>
-  <section class="about-me">
+  <section class="about">
     <hr />
-    <div class="content">
+    <div class="about-content">
       <div>
         <h1>About Me</h1>
         <span>
@@ -33,7 +33,7 @@ $tablet: 700px;
 $desktop: 1440px;
 
 // Scoped styles
-.about-me {
+.about {
   hr {
     height: 0.031em;
     color: $grey;
@@ -41,7 +41,17 @@ $desktop: 1440px;
     border-color: $grey;
   }
 
-  .content {
+  img {
+    display: none;
+
+    @media screen and (min-width: $desktop) {
+      display: block;
+      padding-right: $global-gutters;
+      width: 104px;
+    }
+  }
+
+  &-content {
     max-width: 34.375em;
     width: auto;
     margin: 0 auto;
@@ -52,16 +62,6 @@ $desktop: 1440px;
       display: flex;
       flex-direction: row-reverse;
       padding: $global-gutters * 2 0;
-    }
-
-    img {
-      display: none;
-
-      @media screen and (min-width: $desktop) {
-        display: block;
-        padding-right: $global-gutters;
-        width: 104px;
-      }
     }
   }
 }
