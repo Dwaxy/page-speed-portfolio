@@ -38,7 +38,6 @@ $desktop: 1440px;
   }
 
   #app {
-    padding: $global-gutters;
     background-color: $black;
     color: $grey;
     height: 100vh;
