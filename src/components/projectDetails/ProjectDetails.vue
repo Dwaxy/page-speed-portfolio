@@ -68,6 +68,10 @@ $tablet: 700px;
 $desktop: 1440px;
 
 // Scoped styles
+
+section {
+  padding: $global-gutters;
+}
 ol {
   list-style: decimal inside;
 }

@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <Header />
+    <Header v-if="!'home'.includes($route.name)"/>
     <router-view></router-view>
-    <Footer />
+    <Footer v-if="!'home'.includes($route.name)"/>
   </div>
 </template>
 <script>
@@ -38,9 +38,9 @@ $desktop: 1440px;
   }
 
   #app {
-    padding: $global-gutters;
     background-color: $black;
     color: $grey;
+    height: 100vh;
     }
 
     section {
