@@ -31,6 +31,10 @@ $tablet: 700px;
 $desktop: 1440px;
 
 // Global styles
+html, body {
+  margin: 0;
+  padding: 0;
+}
 * {
   box-sizing: border-box;
   margin: 0;
@@ -38,7 +42,6 @@ $desktop: 1440px;
   }
 
   #app {
-    padding: $global-gutters;
     background-color: $black;
     color: $grey;
     height: 100vh;
@@ -92,7 +95,7 @@ $desktop: 1440px;
       margin-bottom: $global-gutters;
     }
 
-    a {
+    a:not(.footer-link, .info-link) {
       display: inline-block;
       width: 100%;
       padding: 0.6em 0;
