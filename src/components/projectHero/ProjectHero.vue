@@ -1,6 +1,7 @@
 <template>
   <section class="hero">
     <img src="#" alt="hero image" />
+    <div class="hero-description"></div>
   </section>
 </template>
 
@@ -18,24 +19,23 @@ $desktop: 1440px;
 
 // Scoped styles
 
-
-
-.hero {
-    //   width: 100vw;
-    //   z-index: 1;
-    //   background-color: red;
-    //       margin: 0;
-    // padding: 0;
-  img {
-    border: 1px solid white;
-    margin: 0 0 $global-gutters 0;
-  
-  }
+#app {
+  position: relative;
 }
 
+.hero {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 100vw;
+  background-color: red;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
 
-
-
-
-
+  img {
+    border: 1px solid white;
+  }
+}
 </style>

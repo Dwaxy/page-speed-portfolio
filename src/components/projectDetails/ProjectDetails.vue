@@ -1,7 +1,7 @@
 <template>
   <div>
-    <section class="secondary">
-      <div class="content">
+    <section class="project-details">
+      <div class="project-content">
         <h2>Second Heading</h2>
         <p>
           Vaporware DIY chartreuse activated charcoal 8-bit, polaroid lyft
@@ -11,16 +11,16 @@
           gochujang fam photo booth pug.
         </p>
       </div>
-      <div class="image">
+      <div class="project-image">
         <img src="#" alt="full width image" />
       </div>
     </section>
-    <section class="goals">
-      <div class="inner">
-        <div class="content">
+    <section class="project-goals">
+      <div class="goals-inner">
+        <div>
           <h2>Project Goals</h2>
           <p>Brief description of product goals</p>
-          <div class="list">
+          <div class="goals-list">
             <ol>
               <li>Goal</li>
               <li>Goal</li>
@@ -29,16 +29,16 @@
           </div>
         </div>
       </div>
-      <div class="image">
+      <div class="project-image">
         <img src="#" alt="project image" />
       </div>
     </section>
-    <section class="pains">
-      <div class="inner">
-        <div class="content">
+    <section class="project-pains">
+      <div class="pains-inner">
+        <div>
           <h2>Project Pain Points</h2>
           <p>Brief description of product pain points</p>
-          <div class="list">
+          <div class="pains-list">
             <ol>
               <li>Point</li>
               <li>Point</li>
@@ -47,7 +47,7 @@
           </div>
         </div>
       </div>
-      <div class="image">
+      <div class="project-image">
         <img src="#" alt="project image" />
       </div>
     </section>
@@ -62,7 +62,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 // Global variables
 $global-gutters: 1.5rem;
 $tablet: 700px;
@@ -73,47 +72,52 @@ ol {
   list-style: decimal inside;
 }
 
-.goals, .pains {
+.project-goals,
+.project-pains {
   @media screen and (min-width: $tablet) {
     display: flex;
     flex-direction: row-reverse;
   }
-
-  .inner {
-    @media screen and (min-width: $tablet) {
-      margin-left: $global-gutters;
-    }
-  }
 }
 
-.pains {
+.project-pains {
   flex-direction: row;
-  .inner {
-    @media screen and (min-width: $tablet) {
-      margin-left: 0;
-      margin-right: $global-gutters;
-    }
+}
+
+.goals-inner,
+.pains-inner {
+  @media screen and (min-width: $tablet) {
+    margin-left: $global-gutters;
+    display: flex;
+    width: 40%;
   }
 }
 
-.inner {
-    @media screen and (min-width: $tablet) {
-      display: flex;
-      width: 40%;
-    }
+.goals-inner {
+  @media screen and (min-width: $tablet) {
+    margin-left: $global-gutters;
   }
-
-.content {
-    width: 100%;
-  }
-
-.image {
-    width: 100%;
-    height: auto;
-    border: 1px solid white;
 }
 
-.list {
+.pains-inner {
+  @media screen and (min-width: $tablet) {
+    margin-left: 0;
+    margin-right: $global-gutters;
+  }
+}
+
+.goals-list,
+.pains-list {
   margin-bottom: $global-gutters;
+
+  @media screen and (min-width: $tablet) {
+    margin-bottom: 0;
+  }
+}
+
+.project-image {
+  width: 100%;
+  height: auto;
+  border: 1px solid white;
 }
 </style>
