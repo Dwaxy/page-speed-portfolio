@@ -2,7 +2,7 @@
   <section class="projects">
     <ul>
       <li>
-        <div class="project-content">
+        <div class="project">
           <div class="project-header">
             <div>
               <h1>Project Title</h1>
@@ -48,6 +48,10 @@ $desktop: 1440px;
 // Scoped styles
 ul {
   list-style-type: none;
+}
+
+.projects {
+    padding: $global-gutters;
 }
 
 .project {
