@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div class="hero-wrapper">
      <div class="hero-image">
       <img src="#" alt="hero image" />
     </div>
@@ -15,6 +16,7 @@
           </p>
       </div>
     </section>
+    </div>
 </div>
 </template>
 
@@ -36,8 +38,10 @@ $accent: #8676ea;
 
 // Scoped styles
 
-#app {
+.hero-wrapper {
   position: relative;
+  z-index: 1;
+  overflow: hidden;
 }
 
 .hero-image {
@@ -45,7 +49,7 @@ $accent: #8676ea;
   top: 0;
   left: 0;
   width: 100%;
-  height: 258px;
+  height: 100%;
   max-width: 100vw;
   background-color: rgba(0, 0, 0, 0.3);
   margin: 0;
@@ -68,6 +72,7 @@ $accent: #8676ea;
 .hero {
   position: relative;
   z-index: 5;
+  padding: $global-gutters;
 
     p {
     color: $white;

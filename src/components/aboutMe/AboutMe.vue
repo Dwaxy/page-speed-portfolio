@@ -34,6 +34,7 @@ $desktop: 1440px;
 
 // Scoped styles
 .about {
+  padding: $global-gutters;
   hr {
     height: 0.031em;
     color: $grey;
