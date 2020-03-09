@@ -14,13 +14,21 @@
       <div class="name">{{info.name}}</div>
       <span class="role">{{info.role}}</span>
       <div class="links">
-        <a href="" class="info-link"></a>
-        <a href="" class="info-link"></a>
-        <a href="" class="info-link"></a>
+        <a href="" class="info-link">
+          <font-awesome-icon icon="envelope" class="info-icon" />
+        </a>
+        <a href="" class="info-link">
+          <font-awesome-icon :icon="['fab', 'linkedin']" class="info-icon" />
+        </a>
+        <a href="" class="info-link">
+          <font-awesome-icon :icon="['fab', 'github']" class="info-icon" />
+        </a>
       </div>
       <!-- TODO Log in / sign up link -->
-      <div>Log in or Sign Up</div>
-      <span>Copyright 2020</span>
+      <div class="login-buttons">
+        <div>Log in or Sign Up</div>
+      </div>
+      <span class="copy">Copyright 2020</span>
     </div>
 
     <div class="right">
@@ -68,6 +76,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../../lib/vars";
   footer {
     display: flex;
     width: 100%;
@@ -87,10 +96,37 @@ export default {
       right: 0;
       text-align: center;
       font-size: 20px;
+      color: $black;
       span {
         margin: 0 20px 0 20px;
         font-size: 20px;
       }
+    }
+  }
+  .links {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 0 10px 0;
+    .info-icon {
+      font-size: 20px;
+      color: $grey;
+    }
+  }
+  .mid {
+    text-align: center;
+    font-family: "Open Sans", serif;
+    .name {
+      color: $white;
+      font-size: 1.2rem;
+    }
+    .role {
+      font-family: "Bitter", "Source Sans Pro", serif;
+    }
+    .login-buttons {
+      color: $white;
+    }
+    .copy {
+      font-size: 0.6rem;
     }
   }
 </style>
