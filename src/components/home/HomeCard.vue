@@ -42,6 +42,5 @@ $global-gutters: 1.5rem;
     a {
       margin-bottom: 30px
     }
-  
  }
 </style>

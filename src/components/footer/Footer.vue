@@ -2,7 +2,7 @@
   <footer>
 
     <div class="left">
-      <a class="footer-link" href="" v-bind:style="{ 'background-image': 'url(' + prev.imageUrl + ')' }">
+      <a class="footer-link" href="" :style="{ backgroundImage: `url(${prev.imageUrl})` }">
         <div class="link-text">
           <font-awesome-icon icon="arrow-left" class="admin-icon" />
           <span>To {{prev.title}}</span>
@@ -14,13 +14,13 @@
       <div class="name">{{info.name}}</div>
       <span class="role">{{info.role}}</span>
       <div class="links">
-        <a href="" class="info-link">
+        <a :href="info.email" class="info-link">
           <font-awesome-icon icon="envelope" class="info-icon" />
         </a>
-        <a href="" class="info-link">
+        <a :href="info.linkedin" class="info-link">
           <font-awesome-icon :icon="['fab', 'linkedin']" class="info-icon" />
         </a>
-        <a href="" class="info-link">
+        <a :href="info.github" class="info-link">
           <font-awesome-icon :icon="['fab', 'github']" class="info-icon" />
         </a>
       </div>
