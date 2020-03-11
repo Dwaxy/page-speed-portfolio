@@ -59,7 +59,7 @@ $desktop: 1440px;
     padding: $global-gutters 0;
 
     @media screen and (min-width: $desktop) {
-      max-width: 59.375em;
+      max-width: 54em;
       display: flex;
       flex-direction: row-reverse;
       padding: $global-gutters * 2 0;
