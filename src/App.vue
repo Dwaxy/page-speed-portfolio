@@ -19,17 +19,12 @@ export default {
 </script>
 
 <style lang="scss">
-
-// Global variables
-$global-gutters: 1.5rem;
-$white: #fcfdfd;
-$grey: #a0a1a4;
-$black: #1a1b1f;
-$accent: #8676ea;
-$tablet: 700px;
-$desktop: 1440px;
-
+@import "./lib/vars";
 // Global styles
+html, body {
+  margin: 0;
+  padding: 0;
+}
 * {
   box-sizing: border-box;
   margin: 0;
@@ -90,7 +85,7 @@ $desktop: 1440px;
       margin-bottom: $global-gutters;
     }
 
-    a {
+    a:not(.footer-link, .info-link) {
       display: inline-block;
       width: 100%;
       padding: 0.6em 0;
