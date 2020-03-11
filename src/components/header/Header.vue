@@ -50,9 +50,10 @@ export default {
   @import "../../lib/vars.scss";
   header {
     display: flex;
-    max-width: 42.5rem;
+    max-width: 75rem;
     margin: 0 auto;
     justify-content: space-between;
+    padding: $global-gutters;
   }
   .left, .right {
     height: 170px;
@@ -86,7 +87,9 @@ export default {
   .links {
     display: flex;
     justify-content: space-evenly;
-    margin-top: 15px;
+    padding-top: 15px;
+    width: 150px;
+    margin: 0 auto;
     .info-icon {
       font-size: 20px;
       color: $grey;

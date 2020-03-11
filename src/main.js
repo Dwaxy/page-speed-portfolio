@@ -9,6 +9,7 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import IndexPage from '../src/pages/IndexPage.vue';
 import ProfilePage from '../src/pages/ProfilePage.vue';
 import ProjectPage from '../src/pages/ProjectPage.vue';
+import AccountPage from '../src/pages/AccoutPage.vue';
 
 Vue.config.productionTip = false;
 
@@ -21,7 +22,13 @@ Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.use(VueRouter);
 Vue.use(VueResource);
 
-const routes = [{
+const routes = [
+{
+  path: "/signup",
+  component: AccountPage,
+  name: "signup"
+},
+{
   path: '/',
   component: IndexPage,
   name: "home"
@@ -37,6 +44,7 @@ const routes = [{
   props: true, //this enables route params
   name: "project"
 },
+
 ];
 
 const router = new VueRouter({
