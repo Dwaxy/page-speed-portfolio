@@ -9,6 +9,7 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import IndexPage from '../src/pages/IndexPage.vue';
 import ProfilePage from '../src/pages/ProfilePage.vue';
 import ProjectPage from '../src/pages/ProjectPage.vue';
+import ProjectEditorPage from '../src/pages/ProjectEditorPage.vue';
 
 Vue.config.productionTip = false;
 
@@ -21,31 +22,37 @@ Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.use(VueRouter);
 Vue.use(VueResource);
 
-const routes = [{
-  path: '/',
-  component: IndexPage,
-  name: "home"
-}, 
-{
-  path: '/profile',
-  component: ProfilePage,
-  name: "profile"
-},
-{
-  path: '/profile/:project',
-  component: ProjectPage,
-  props: true, //this enables route params
-  name: "project"
-},
+const routes = [
+  {
+    path: '/',
+    component: IndexPage,
+    name: 'home'
+  },
+  {
+    path: '/profile',
+    component: ProfilePage,
+    name: 'profile'
+  },
+  {
+    path: '/profile/:project',
+    component: ProjectPage,
+    props: true, //this enables route params
+    name: 'project'
+  },
+  {
+    path: '/admin/project-editor',
+    component: ProjectEditorPage,
+    props: true, //this enables route params
+    name: 'project-editor'
+  }
 ];
 
 const router = new VueRouter({
   routes,
   mode: 'history'
-  })
+});
 
 new Vue({
   render: h => h(App),
   router
 }).$mount('#app');
-
