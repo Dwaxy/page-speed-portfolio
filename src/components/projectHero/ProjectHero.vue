@@ -125,7 +125,6 @@ $red: rgba(255, 101, 74, 1);
     font-family: "Bitter", serif;
   }
 }
-
 .hero-wrapper {
   position: relative;
   z-index: 1;
