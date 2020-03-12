@@ -14,7 +14,7 @@
 
         </div>
         <div class="form">
-            <form action="" @submit.prevent="processForm">
+            <form action="" @submit.prevent="createUser">
                 <div class="names">
                     <input type="text" class="input" placeholder="Frist Name" v-model="formData.firstName">
 
@@ -35,6 +35,7 @@
                     <input type="text" class="input" placeholder="LinkedIn" v-model="formData.linkedin">
                     <input type="text" class="input" placeholder="GitHub" v-model="formData.github">
                 </div>
+                <input type="submit" value="submit">
             </form>
         </div>
     </div>
@@ -42,6 +43,8 @@
 </template>
 
 <script>
+import axios from "axios"
+import config from "../../config"
 export default {
     name: "AccountPage",
     data: function () {
@@ -63,9 +66,25 @@ export default {
         }
     },
     methods: {
-        submitted() {
+        createUser: function() {
+            console.log("called")
             this.isSubmitted = true
-        }
+            return axios
+                .post(`${ config.apiUrl }users/register`, this.user)
+                .then((res) => {
+                    console.log(res.data.user)
+                    let user = res.data.user
+                    if(user) {
+                        localStorage.userEmail = user.email
+                    } else {
+                        //message
+                    }
+                })
+                .catch(function(error) {
+                    // handle error
+                    console.log(error);
+                });
+        },
     }
 }
 </script>

@@ -24,9 +24,9 @@ Vue.use(VueResource);
 
 const routes = [
 {
-  path: "/signup",
+  path: "/register",
   component: AccountPage,
-  name: "signup"
+  name: "register"
 },
 {
   path: '/',
