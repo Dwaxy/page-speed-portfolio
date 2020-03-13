@@ -78,7 +78,6 @@ export default {
 // Global variables
 @import "../../lib/vars.scss";
 
-
 // Scoped styles
 .score {
   height: 10em;
@@ -112,7 +111,6 @@ export default {
   h2 {
     margin-bottom: $global-gutters/4;
   }
-
   .subhead {
     font-family: "Bitter", serif;
   }

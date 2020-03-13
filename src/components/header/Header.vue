@@ -20,12 +20,12 @@
         </a>
       </div>
     </div>
-
     <div class="right"></div>
   </header>
 </template>
 
 <script>
+
 export default {
   name: "Header",
   data: function() {
