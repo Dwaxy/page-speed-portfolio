@@ -76,16 +76,7 @@ export default {
 
 <style lang="scss" scoped>
 // Global variables
-$global-gutters: 1.5rem;
-$tablet: 700px;
-$desktop: 1440px;
-$white: #fcfdfd;
-$grey: #a0a1a4;
-$black: #1a1b1f;
-$accent: #8676ea;
-$green: rgba(57, 190, 108, 1);
-$orange: rgba(234, 173, 57, 1);
-$red: rgba(255, 101, 74, 1);
+@import "../../lib/vars.scss";
 
 // Scoped styles
 .score {
@@ -120,7 +111,6 @@ $red: rgba(255, 101, 74, 1);
   h2 {
     margin-bottom: $global-gutters/4;
   }
-
   .subhead {
     font-family: "Bitter", serif;
   }

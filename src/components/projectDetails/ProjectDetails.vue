@@ -88,9 +88,7 @@ export default {
 
 <style lang="scss" scoped>
 // Global variables
-$global-gutters: 1.5rem;
-$tablet: 700px;
-$desktop: 1440px;
+@import "../../lib/vars.scss";
 
 // Scoped styles
 
