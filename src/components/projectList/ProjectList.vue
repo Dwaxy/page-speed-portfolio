@@ -1,30 +1,34 @@
 <template>
   <section class="projects">
     <ul>
-      <li>
+      <li v-for="project in projects" :key="project.id">
         <div class="project">
           <div class="project-header">
             <div>
-              <h1>Project Title</h1>
+              <h1>{{project.title}}</h1>
             </div>
             <div>
-              <font-awesome-icon icon="edit" class="admin-icon" />
-              <font-awesome-icon icon="trash-alt" class="admin-icon" />
+              <router-link
+                :to="{
+            name: 'project-editor',
+            params: {projectId: project.id}
+          }"
+                class="edit-link"
+              >
+                <font-awesome-icon icon="edit" class="admin-icon" />
+              </router-link>
+              <a href="#" @click.prevent="deleteArticle(article.id)" class="delete-link">
+                <font-awesome-icon icon="trash-alt" class="admin-icon" />
+              </a>
             </div>
           </div>
           <div class="project-image">
             <img src alt="project image" />
           </div>
           <div class="project-description">
-            <p>
-              Vaporware DIY chartreuse activated charcoal 8-bit, polaroid lyft
-              blue bottle lumbersexual aesthetic. Lo-fi seitan quinoa, yr schlitz
-              man braid locavore knausgaard vaporware banh mi. Intelligentsia
-              viral heirloom pop-up VHS master cleanse shoreditch. Vice next level
-              gochujang fam photo booth pug.
-            </p>
+            <p>{{project.description}}</p>
             <div class="project-button">
-              <a href="#">View More</a>
+              <a href="#" class="button">View More</a>
             </div>
           </div>
         </div>
@@ -34,24 +38,69 @@
 </template>
 
 <script>
+import axios from "axios";
+import * as config from "../../../config";
+
 export default {
-  name: "ProjectList"
+  name: "ProjectList",
+  data: function() {
+    return {
+      projects: []
+    };
+  },
+  methods: {
+    getProjects: function() {
+      return axios
+        .get(`${config.apiUrl}/projects`)
+        .then(response => {
+          //handle success
+          return response.data.projects;
+        })
+        .catch(function(error) {
+          //handle error
+          console.log(error);
+        });
+    },
+    deleteProject: function(projectId) {
+      return axios
+        .delete(`${config.apiUrl}/projects/${projectId}`)
+        .then(async () => {
+          // handle success
+          this.projects = await this.getProjects();
+        })
+        .catch(function(error) {
+          // handle error
+          console.log(error);
+        });
+    }
+  },
+  watch: {
+    source: async function() {
+      this.projects = await this.getProjects();
+    }
+  },
+  created: async function() {
+    this.projects = await this.getProjects();
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 // Global variables
-$global-gutters: 1.5rem;
-$tablet: 700px;
-$desktop: 1440px;
-
+@import "../../lib/vars.scss";
 // Scoped styles
 ul {
   list-style-type: none;
 }
 
 .projects {
-    padding: $global-gutters;
+  padding: $global-gutters;
+}
+
+a.edit-link,
+a.delete-link {
+  text-decoration: none;
+  color: white;
 }
 
 .project {
@@ -67,6 +116,7 @@ ul {
   }
 
   .admin-icon {
+    // display: none;
     margin-left: $global-gutters;
     font-size: 1.125rem;
 

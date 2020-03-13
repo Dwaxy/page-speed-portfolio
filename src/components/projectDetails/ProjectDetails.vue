@@ -55,17 +55,40 @@
 </template>
 
 <script>
+// import axios from "axios";
+// import * as config from "../../../config";
+
 export default {
   name: "ProjectPage",
-  components: {}
+  data: function() {
+    return {
+      article: {}
+    };
+  }
+  // methods: {
+  //   getProject: function(projectId) {
+  //     return axios
+  //       .get(`${config.apiUrl}/projects/${projectId}`)
+  //       .then(response => {
+  //         //handle success
+  //         return response.data.article;
+  //       })
+  //       .catch(function(error) {
+  //         //handle error
+  //         console.log(error);
+  //       });
+  //   }
+  // },
+  // created: async function() {
+  //   const projectId = this.$route.params.projectId;
+  //   this.project = await this.getProject(projectId);
+  // }
 };
 </script>
 
 <style lang="scss" scoped>
 // Global variables
-$global-gutters: 1.5rem;
-$tablet: 700px;
-$desktop: 1440px;
+@import "../../lib/vars.scss";
 
 // Scoped styles
 

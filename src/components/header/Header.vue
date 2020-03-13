@@ -20,11 +20,7 @@
         </a>
       </div>
     </div>
- 
-
-    <div class="right">
-
-    </div>
+    <div class="right"></div>
   </header>
 </template>
 
@@ -41,62 +37,61 @@ export default {
         linkedin: "",
         github: ""
       }
-    }
+    };
   }
 };
 </script>
 
 <style lang="scss" scoped>
-  @import "../../lib/vars.scss";
-  header {
-    display: flex;
-    max-width: 75rem;
-    margin: 0 auto;
-    justify-content: space-between;
-    padding: $global-gutters;
+@import "../../lib/vars.scss";
+
+header {
+  display: flex;
+  max-width: 42.5rem;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+.left,
+.right {
+  height: 170px;
+  width: 300px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.mid {
+  text-align: center;
+  font-family: "Open Sans", serif;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 300px;
+  .name {
+    color: $white;
+    font-size: 1.2rem;
   }
-  .left, .right {
-    height: 170px;
-    width: 300px;
-    position: relative;
-    display: flex;
-    align-items: center;
+  .role {
+    font-family: "Bitter", "Source Sans Pro", serif;
+    font-size: 0.9rem;
   }
-  .mid {
-    text-align: center;
-    font-family: "Open Sans", serif;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    width: 300px;
-    .name {
-      color: $white;
-      font-size: 1.2rem;
-    }
-    .role {
-      font-family: "Bitter", "Source Sans Pro", serif;
-      font-size: 0.9rem;
-    }
-    .login-buttons {
-      color: $white;
-    }
-    .copy {
-      font-size: 0.6rem;
-    }
-  }
-  .links {
-    display: flex;
-    justify-content: space-evenly;
-    padding-top: 15px;
-    width: 150px;
-    margin: 0 auto;
-    .info-icon {
-      font-size: 20px;
-      color: $grey;
-    }
-  }
-  .back-button {
-    font-size: 1.5rem;
+  .login-buttons {
     color: $white;
   }
+  .copy {
+    font-size: 0.6rem;
+  }
+}
+.links {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 15px;
+  .info-icon {
+    font-size: 20px;
+    color: $grey;
+  }
+}
+.back-button {
+  font-size: 1.5rem;
+  color: $white;
+}
 </style>

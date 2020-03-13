@@ -27,10 +27,7 @@ export default {
 
 <style lang="scss" scoped>
 // Global variables
-$global-gutters: 1.5rem;
-$grey: #a0a1a4;
-$tablet: 700px;
-$desktop: 1440px;
+@import "../../lib/vars.scss";
 
 // Scoped styles
 .about {
@@ -59,7 +56,7 @@ $desktop: 1440px;
     padding: $global-gutters 0;
 
     @media screen and (min-width: $desktop) {
-      max-width: 59.375em;
+      max-width: 54em;
       display: flex;
       flex-direction: row-reverse;
       padding: $global-gutters * 2 0;

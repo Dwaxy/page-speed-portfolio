@@ -70,7 +70,7 @@ export default {
             console.log("called")
             this.isSubmitted = true
             return axios
-                .post(`${ config.apiUrl }users/register`, this.user)
+                .post(`${ config.apiUrl }users/register`, this.formData)
                 .then((res) => {
                     console.log(res.data.user)
                     let user = res.data.user
