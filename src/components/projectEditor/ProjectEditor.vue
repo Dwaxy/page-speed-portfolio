@@ -251,7 +251,6 @@ input.technology {
   width: 100%;
   margin-bottom: $global-gutters;
 }
-
 label {
   font-family: "Open Sans", serif;
   color: $white;
