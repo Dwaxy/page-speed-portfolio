@@ -66,7 +66,7 @@ export default {
     getPageSpeed: function() {
       return axios
         .get(
-          `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://developers.google.com&key=AIzaSyA8SzpE4etWEq1Hr5tMmEzfXlVpIiIFQQw`
+          `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://developers.google.com` //add api key
         )
         .then(response => {
           return response.data.loadingExperience.overall_category;
