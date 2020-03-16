@@ -1,9 +1,9 @@
 <template>
   <div>
-    <Header/>
+    <Header userData="userData"/>
     <AboutMe />
     <ProjectList />
-    <Footer />>
+    <Footer />
   </div>
 </template>
 
@@ -15,6 +15,7 @@ import Footer from "../components/footer/Footer"
 
 export default {
   name: "ProfilePage",
+  props: ["userData"],
   components: {
     AboutMe,
     ProjectList,

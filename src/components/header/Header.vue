@@ -28,6 +28,7 @@
 
 export default {
   name: "Header",
+  props: ["userData"],
   data: function() {
     return {
       info: {

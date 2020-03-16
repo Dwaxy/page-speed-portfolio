@@ -14,9 +14,6 @@
   </div>
 </template>
 
-// https://ibb.co/Zf7dnDH
-// https://ibb.co/XzZHNhP
-
 <script>
 import HomeCard from "../components/home/HomeCard";
 import axios from "axios"

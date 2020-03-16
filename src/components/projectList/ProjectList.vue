@@ -9,6 +9,7 @@
             </div>
             <div>
               <router-link
+                v-if="isLoggedIn"
                 :to="{
             name: 'project-editor',
             params: {projectId: project.id}
@@ -17,18 +18,30 @@
               >
                 <font-awesome-icon icon="edit" class="admin-icon" />
               </router-link>
-              <a href="#" @click.prevent="deleteArticle(article.id)" class="delete-link">
+              <a
+                v-if="isLoggedIn"
+                href="#"
+                @click.prevent="deleteProject(project.id)"
+                class="delete-link"
+              >
                 <font-awesome-icon icon="trash-alt" class="admin-icon" />
               </a>
             </div>
           </div>
           <div class="project-image">
-            <img src alt="project image" />
+            <img :src="project.heroImage" alt="project image" />
           </div>
           <div class="project-description">
             <p>{{project.description}}</p>
             <div class="project-button">
-              <a href="#" class="button">View More</a>
+              <router-link
+                :to="{
+                name: 'project',
+                params: {projectId: project.id}
+                
+              }"
+                class="button"
+              >View More</router-link>
             </div>
           </div>
         </div>
@@ -45,7 +58,9 @@ export default {
   name: "ProjectList",
   data: function() {
     return {
-      projects: []
+      projects: [],
+      // change to false once log in is all set up
+      isLoggedIn: true
     };
   },
   methods: {
@@ -81,6 +96,7 @@ export default {
   },
   created: async function() {
     this.projects = await this.getProjects();
+    // this.isLoggedIn = authService.isLoggedIn();
   }
 };
 </script>
@@ -93,6 +109,10 @@ ul {
   list-style-type: none;
 }
 
+li {
+  margin-bottom: $global-gutters * 2;
+}
+
 .projects {
   padding: $global-gutters;
 }
@@ -100,7 +120,7 @@ ul {
 a.edit-link,
 a.delete-link {
   text-decoration: none;
-  color: white;
+  color: $grey;
 }
 
 .project {
@@ -108,7 +128,7 @@ a.delete-link {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-column-gap: $global-gutters * 2;
-    grid-template-rows: repeat(2, auto);
+    grid-template-rows: 50px auto;
   }
 
   h1 {
@@ -143,12 +163,22 @@ a.delete-link {
     @media screen and (min-width: $desktop) {
       grid-column: 2/3;
       grid-row: 2/3;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
   }
 
   &-image {
-    border: 1px solid white;
     margin: 0 0 $global-gutters 0;
+    width: 100%;
+    height: 100%;
+
+    img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
 
     @media screen and (min-width: $desktop) {
       grid-column: 1/2;

@@ -4,14 +4,10 @@
     <div class="about-content">
       <div>
         <h1>About Me</h1>
-        <span>
-          Vaporware DIY chartreuse activated charcoal 8-bit, polaroid lyft blue
-          bottle lumbersexual aesthetic. Lo-fi seitan quinoa, yr schlitz man
-          braid locavore knausgaard vaporware banh mi.
-        </span>
+        <!-- <span>{{user.bio}}</span> -->
       </div>
       <div>
-        <img src="#" alt="profile picture" />
+        <!-- <img :src="user.profileImage" alt="profile picture" /> -->
       </div>
     </div>
     <hr />
@@ -19,9 +15,10 @@
 </template>
 
 <script>
+
 export default {
   name: "AboutMe",
-  components: {}
+ 
 };
 </script>
 
