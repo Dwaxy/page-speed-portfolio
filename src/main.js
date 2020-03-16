@@ -11,6 +11,7 @@ import ProfilePage from '../src/pages/ProfilePage.vue';
 import ProjectPage from '../src/pages/ProjectPage.vue';
 import ProjectEditorPage from '../src/pages/ProjectEditorPage.vue';
 import AccountPage from '../src/pages/AccoutPage.vue';
+import LogIn from '../src/pages/LogIn'
 
 Vue.config.productionTip = false;
 
@@ -24,6 +25,11 @@ Vue.use(VueRouter);
 Vue.use(VueResource);
 
 const routes = [
+  {
+    path: '/login',
+    component: LogIn,
+    name: 'login'
+  },
   {
     path: '/signup',
     component: AccountPage,
