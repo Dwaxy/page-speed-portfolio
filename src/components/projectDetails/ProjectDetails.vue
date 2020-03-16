@@ -2,87 +2,79 @@
   <div>
     <section class="project-details">
       <div class="project-content">
-        <h2>Second Heading</h2>
-        <p>
-          Vaporware DIY chartreuse activated charcoal 8-bit, polaroid lyft
-          blue bottle lumbersexual aesthetic. Lo-fi seitan quinoa, yr schlitz
-          man braid locavore knausgaard vaporware banh mi. Intelligentsia
-          viral heirloom pop-up VHS master cleanse shoreditch. Vice next level
-          gochujang fam photo booth pug.
-        </p>
+        <h2>{{project.heading}}</h2>
+        <p>{{project.copy}}</p>
       </div>
       <div class="project-image">
-        <img src="#" alt="full width image" />
+        <img :src="project.firstImage" alt="full width image" />
       </div>
     </section>
     <section class="project-goals">
       <div class="goals-inner">
         <div>
           <h2>Project Goals</h2>
-          <p>Brief description of product goals</p>
           <div class="goals-list">
             <ol>
-              <li>Goal</li>
-              <li>Goal</li>
-              <li>Goal</li>
+              <li>{{project.goals[0]}}</li>
+              <li>{{project.goals[1]}}</li>
+              <li>{{project.goals[2]}}</li>
             </ol>
           </div>
         </div>
       </div>
       <div class="project-image">
-        <img src="#" alt="project image" />
+        <img :src="project.secondImage" alt="project image" />
       </div>
     </section>
     <section class="project-pains">
       <div class="pains-inner">
         <div>
           <h2>Project Pain Points</h2>
-          <p>Brief description of product pain points</p>
           <div class="pains-list">
             <ol>
-              <li>Point</li>
-              <li>Point</li>
-              <li>Point</li>
+              <li>{{project.pains[0]}}</li>
+              <li>{{project.pains[1]}}</li>
+              <li>{{project.pains[2]}}</li>
             </ol>
           </div>
         </div>
       </div>
       <div class="project-image">
-        <img src="#" alt="project image" />
+        <img :src="project.thirdImage" alt="project image" />
       </div>
     </section>
   </div>
 </template>
 
 <script>
-// import axios from "axios";
-// import * as config from "../../../config";
+import axios from "axios";
+import * as config from "../../../config";
 
 export default {
   name: "ProjectPage",
   data: function() {
     return {
-      article: {}
+      project: {}
     };
+  },
+  methods: {
+    getProject: function(projectId) {
+      return axios
+        .get(`${config.apiUrl}/projects/${projectId}`)
+        .then(response => {
+          //handle success
+          return response.data.project;
+        })
+        .catch(function(error) {
+          //handle error
+          console.log(error);
+        });
+    }
+  },
+  created: async function() {
+    const projectId = this.$route.params.projectId;
+    this.project = await this.getProject(projectId);
   }
-  // methods: {
-  //   getProject: function(projectId) {
-  //     return axios
-  //       .get(`${config.apiUrl}/projects/${projectId}`)
-  //       .then(response => {
-  //         //handle success
-  //         return response.data.article;
-  //       })
-  //       .catch(function(error) {
-  //         //handle error
-  //         console.log(error);
-  //       });
-  //   }
-  // },
-  // created: async function() {
-  //   const projectId = this.$route.params.projectId;
-  //   this.project = await this.getProject(projectId);
-  // }
 };
 </script>
 
