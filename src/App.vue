@@ -1,22 +1,14 @@
 <template>
   <div id="app">
-    <Header v-if="!'home'.includes($route.name)" />
     <router-view></router-view>
-    <Footer v-if="!'home'.includes($route.name)" />
   </div>
 </template>
 
 <script>
-import Header from "./components/header/Header";
-import Footer from "./components/footer/Footer";
 
 export default {
   name: "App",
-  components: {
-    Header,
-    Footer
-  }
-};
+}
 </script>
 
 <style lang="scss">
