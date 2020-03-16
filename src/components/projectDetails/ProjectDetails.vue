@@ -15,9 +15,7 @@
           <h2>Project Goals</h2>
           <div class="goals-list">
             <ol>
-              <li>{{project.goals[0]}}</li>
-              <li>{{project.goals[1]}}</li>
-              <li>{{project.goals[2]}}</li>
+              <li v-for="goal in project.goals" :key="goal">{{goal.goal}}</li>
             </ol>
           </div>
         </div>
@@ -32,9 +30,7 @@
           <h2>Project Pain Points</h2>
           <div class="pains-list">
             <ol>
-              <li>{{project.pains[0]}}</li>
-              <li>{{project.pains[1]}}</li>
-              <li>{{project.pains[2]}}</li>
+              <li v-for="pain in project.pains" :key="pain">{{pain.pain}}</li>
             </ol>
           </div>
         </div>
@@ -54,7 +50,10 @@ export default {
   name: "ProjectPage",
   data: function() {
     return {
-      project: {}
+      project: {
+        goals: [],
+        pains: []
+      }
     };
   },
   methods: {
@@ -136,7 +135,14 @@ ol {
 
 .project-image {
   width: 100%;
-  height: auto;
-  border: 1px solid white;
+  height: 100%;
+
+  img {
+width: 100%;
+      height: 300px;
+      object-fit: cover;
+  }
+
 }
+
 </style>

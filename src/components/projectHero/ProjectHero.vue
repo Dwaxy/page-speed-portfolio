@@ -2,6 +2,7 @@
   <div>
     <div class="hero-wrapper">
       <div class="hero-image">
+        <div class="overlay"></div>
         <img :src="project.heroImage" alt="hero image" />
       </div>
       <section class="hero">
@@ -150,9 +151,11 @@ export default {
   }
   ul {
     list-style-type: none;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-gap: $global-gutters;
+    display: flex;
+    flex-wrap: wrap;
+    // display: grid;
+    // grid-template-columns: repeat(4, auto);
+    // grid-gap: $global-gutters;
     overflow-y: scroll;
     padding: $global-gutters 0;
 
@@ -161,14 +164,20 @@ export default {
     }
 
     @media (min-width: $tablet) {
-      grid-template-columns: repeat(4, 1fr);
+      // grid-template-columns: repeat(4, 1fr);
     }
-  }
+li {
+  margin-bottom: $global-gutters /2;
+}
 
-  li {
+     li:not(:last-child) {
+       margin-right: $global-gutters/2;
     // display: flex;
     // justify-content: center;
   }
+  }
+
+ 
 
   .chip {
     background-color: $grey;
@@ -176,10 +185,6 @@ export default {
     color: $white;
     padding: $global-gutters / 3 $global-gutters;
     line-height: 2.5em;
-
-    @media (min-width: $tablet) {
-      padding: $global-gutters / 3 $global-gutters * 2;
-    }
   }
 
   .subhead {
@@ -199,16 +204,20 @@ export default {
   padding: 0;
   z-index: 1;
 
-  @media (min-width: $tablet) {
-    height: 212px;
-  }
-
-  @media (min-width: $desktop) {
-    height: 308px;
+  .overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+     width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
   }
 
   img {
-    border: 1px solid $white;
+     width: 100%;
+     min-height: 300px;
+      height: 100%;
+      object-fit: cover;
   }
 }
 
