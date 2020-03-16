@@ -4,14 +4,10 @@
     <div class="about-content">
       <div>
         <h1>About Me</h1>
-        <span>
-          Vaporware DIY chartreuse activated charcoal 8-bit, polaroid lyft blue
-          bottle lumbersexual aesthetic. Lo-fi seitan quinoa, yr schlitz man
-          braid locavore knausgaard vaporware banh mi.
-        </span>
+        <!-- <span>{{user.bio}}</span> -->
       </div>
       <div>
-        <img src="#" alt="profile picture" />
+        <!-- <img :src="user.profileImage" alt="profile picture" /> -->
       </div>
     </div>
     <hr />
@@ -19,9 +15,35 @@
 </template>
 
 <script>
+// import axios from "axios";
+// import * as config from "../../../config";
+
 export default {
   name: "AboutMe",
-  components: {}
+  data: function() {
+    return {
+      user: {}
+    };
+  },
+  methods: {
+    // getUser: function(userId) {
+    //   return axios
+    //     .get(`${config.apiUrl}/users/${userId}`)
+    //     .then(response => {
+    //       //handle success
+    //       console.log(response);
+    //       return response.data.user;
+    //     })
+    //     .catch(function(error) {
+    //       //handle error
+    //       console.log(error);
+    //     });
+    // }
+  },
+  created: async function() {
+    const userId = this.$route.params.userId;
+    this.user = await this.getUser(userId);
+  }
 };
 </script>
 

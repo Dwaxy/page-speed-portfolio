@@ -2,6 +2,12 @@
   <section>
     <h1 v-if="!isEdit">New Project</h1>
     <h1 v-if="isEdit">Edit Project</h1>
+    <div v-if="errors.length">
+      <span>Please correct the following error(s):</span>
+      <ul>
+        <li v-for="error in errors" :key="error">{{error}}</li>
+      </ul>
+    </div>
     <form @submit="checkForm">
       <div class="project-title wrapper">
         <label for="title">Title</label>
@@ -18,56 +24,29 @@
       </div>
       <div class="project-hero wrapper">
         <label for="hero">Hero Image</label>
-        <input type="text" placeholder="Hero Image URL" v-model="project.hero" />
+        <input type="text" placeholder="Hero Image URL" v-model="project.heroImage" />
       </div>
       <div class="project-technologies wrapper">
-        <label for="technologies">Technologies Used</label>
-        <div class="desktop-wrapper">
-          <input
-            type="text"
-            placeholder="Technology"
-            v-model="project.technologies"
-            class="technology"
-          />
-          <input
-            type="text"
-            placeholder="Technology"
-            v-model="project.technologies"
-            class="technology"
-          />
+        <label for="technologies" class="technologies-label">Technologies Used</label>
+        <div v-for="(technology, index) in project.technologies" :key="index">
+          <div class="desktop-wrapper">
+            <input
+              type="text"
+              placeholder="Technology"
+              v-model="technology.technology"
+              class="technology"
+            />
+          </div>
         </div>
-        <div class="desktop-wrapper">
-          <input
-            type="text"
-            placeholder="Technology"
-            v-model="project.technologies"
-            class="technology"
-          />
-          <input
-            type="text"
-            placeholder="Technology"
-            v-model="project.technologies"
-            class="technology"
-          />
-        </div>
-        <div class="desktop-wrapper">
-          <input
-            type="text"
-            placeholder="Technology"
-            v-model="project.technologies"
-            class="technology"
-          />
-          <input
-            type="text"
-            placeholder="Technology"
-            v-model="project.technologies"
-            class="technology"
-          />
-        </div>
+        <a
+          v-if="project.technologies && project.technologies.length < 6"
+          @click="addTechnology"
+          class="button"
+        >Add Technology</a>
       </div>
       <div class="project-link wrapper">
-        <label for="link">Link</label>
-        <input type="text" placeholder="Link" v-model="project.link" />
+        <label for="link">Link to Live Project</label>
+        <input type="text" placeholder="Live Project URL" v-model="project.liveSite" />
       </div>
       <div class="project-heading wrapper">
         <label for="heading">Heading</label>
@@ -89,20 +68,35 @@
         <label for="third-image">Third Image</label>
         <input type="text" placeholder="Third Image" v-model="project.thirdImage" />
       </div>
-      <div class="project-goals wrapper">
+      <div v-if="!isEdit" class="project-goals wrapper">
         <label for="goals">Goals</label>
-        <input type="text" placeholder="Goal One" v-model="project.goals" class="goal" />
-        <input type="text" placeholder="Goal Two" v-model="project.goals" class="goal" />
-        <input type="text" placeholder="Goal Three" v-model="project.goals" class="goal" />
+        <div v-for="(goal, index) in project.goals" :key="index">
+          <input type="text" placeholder="Goal" v-model="goal.goal" class="goal" />
+        </div>
+        <a v-if="project.goals && project.goals.length < 3" @click="addGoal" class="button">Add Goal</a>
       </div>
-      <div class="project-pains wrapper">
+      <div v-if="!isEdit" class="project-pains wrapper">
+        <label for="pains">Pains</label>
+        <div v-for="(pain, index) in project.pains" :key="index">
+          <input type="text" placeholder="Pain" v-model="pain.pain" class="pain" />
+        </div>
+        <a v-if="project.pains && project.pains.length < 3" @click="addPain" class="button">Add Pain</a>
+      </div>
+      <div v-if="isEdit" class="project-pains wrapper">
         <label for="pains">Pain Points</label>
-        <input type="text" placeholder="Point One" v-model="project.pains" class="pain" />
-        <input type="text" placeholder="Point Two" v-model="project.pains" class="pain" />
-        <input type="text" placeholder="Point Three" v-model="project.pains" class="pain" />
+        <input type="text" placeholder="Point One" v-model="project.pains[0].pain" class="pain" />
+        <input type="text" placeholder="Point Two" v-model="project.pains[1].pain" class="pain" />
+        <input type="text" placeholder="Point Three" v-model="project.pains[2].pain" class="pain" />
+      </div>
+      <div v-if="isEdit" class="project-goals wrapper">
+        <label for="goals">Goals</label>
+        <input type="text" placeholder="Goal One" v-model="project.goals[0].goal" class="goal" />
+        <input type="text" placeholder="Goal Two" v-model="project.goals[1].goal" class="goal" />
+        <input type="text" placeholder="Goal Three" v-model="project.goals[2].goal" class="goal" />
       </div>
       <div class="submit-wrapper">
-        <input type="submit" class="button" value="Create Project" />
+        <input v-if="!isEdit" type="submit" class="button" value="Create Project" />
+        <input v-if="isEdit" type="submit" class="button" value="Update Project" />
       </div>
     </form>
   </section>
@@ -116,7 +110,11 @@ export default {
   name: "ProjectEditor",
   data: function() {
     return {
-      project: {},
+      project: {
+        technologies: [],
+        goals: [],
+        pains: []
+      },
       errors: [],
       isEdit: false
     };
@@ -124,7 +122,47 @@ export default {
   methods: {
     checkForm: function(event) {
       event.preventDefault();
-      this.createProject();
+      this.errors = [];
+
+      if (!this.project.title) {
+        this.errors.push("Project Title Required");
+      }
+      if (!this.project.description) {
+        this.errors.push("Project Description Required");
+      }
+      if (!this.project.heroImage) {
+        this.errors.push("Project Hero Image Required");
+      }
+      if (!this.project.liveSite) {
+        this.errors.push("Project Live Link Required");
+      }
+      if (!this.project.heading) {
+        this.errors.push("Project Heading Required");
+      }
+      if (!this.project.copy) {
+        this.errors.push("Project Body Copy Required");
+      }
+      if (!this.project.firstImage) {
+        this.errors.push("Project First Image Required");
+      }
+      if (!this.project.secondImage) {
+        this.errors.push("Project Second Image Required");
+      }
+      if (!this.project.thirdImage) {
+        this.errors.push("Project Third Image Required");
+      }
+      if (!this.errors.length) {
+        this.isEdit ? this.updateProject() : this.createProject();
+      }
+    },
+    addTechnology: function() {
+      this.project.technologies.push({ technology: "" });
+    },
+    addGoal: function() {
+      this.project.goals.push({ goal: "" });
+    },
+    addPain: function() {
+      this.project.pains.push({ pain: "" });
     },
     createProject: function() {
       return axios
@@ -135,6 +173,30 @@ export default {
         })
         .catch(function(error) {
           // handle error
+          console.log(error);
+        });
+    },
+    getProjectById: function(projectId) {
+      return axios
+        .get(`${config.apiUrl}/projects/${projectId}`)
+        .then(function(response) {
+          //handle success
+          return response.data.project;
+        })
+        .catch(function(error) {
+          //handle error
+          console.log(error);
+        });
+    },
+    updateProject: function() {
+      return axios
+        .put(`${config.apiUrl}/projects/${this.project.id}`, this.project)
+        .then(() => {
+          //handle success
+          this.$router.push({ path: "/profile" });
+        })
+        .catch(function(error) {
+          //handle error
           console.log(error);
         });
     }
@@ -156,11 +218,11 @@ section {
   max-width: 45rem;
   width: auto;
   margin: 0 auto;
-  padding: $global-gutters 0;
+  padding: $global-gutters;
 
   @media screen and (min-width: $desktop) {
     max-width: 95rem;
-    padding: $global-gutters * 2 0;
+    padding: $global-gutters;
   }
 }
 
@@ -183,25 +245,12 @@ input.button {
   border: none;
 }
 
-input.pain:not(:last-of-type),
-input.goal:not(:last-of-type),
+input.pain,
+input.goal,
 input.technology {
+  width: 100%;
   margin-bottom: $global-gutters;
 }
-
-input.technology {
-  &:nth-of-type(odd) {
-    @media screen and (min-width: $desktop) {
-      margin-right: $global-gutters;
-    }
-  }
-  @media screen and (min-width: $desktop) {
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-  }
-}
-
 label {
   font-family: "Open Sans", serif;
   color: $white;
