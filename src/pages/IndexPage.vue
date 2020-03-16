@@ -7,65 +7,72 @@
       <span>Login</span>
     </div>
     <div class="card-holder">
-      <div v-for="card in cards" :key="card.name">
-        <HomeCard v-bind:userData="card"/>
+      <div v-for="user in users" :key="user.id">
+        <HomeCard v-bind:userData="user" />
       </div>
     </div>
   </div>
 </template>
 
+// https://ibb.co/Zf7dnDH
+// https://ibb.co/XzZHNhP
+
 <script>
-import HomeCard from "../components/home/HomeCard"
+import HomeCard from "../components/home/HomeCard";
+import axios from "axios"
+import * as config from "../../config"
 export default {
-name: 'IndexPage',
+  name: "IndexPage",
   components: {
     HomeCard
   },
   data: function() {
     return {
-      cards: [
-        {
-          name: "John",
-          imageUrl: "https://image.shutterstock.com/image-photo/portrait-smiling-red-haired-millennial-260nw-1194497251.jpg",
-          role: "Web Developer"
-        },
-        {
-          name: "Lea",
-          imageUrl: "https://image.shutterstock.com/image-photo/portrait-smiling-red-haired-millennial-260nw-1194497251.jpg",
-          role: "Web Designer"
-        },
-        {
-          name: "Max",
-          imageUrl: "https://image.shutterstock.com/image-photo/portrait-smiling-red-haired-millennial-260nw-1194497251.jpg",
-          role: "UI / UX Designer"
-        }
-      ]
-    }
+      users: {}
+    };
+  },
+  methods: {
+    getUsers: function() {
+      return axios
+        .get(`${config.apiUrl}/users`)
+        .then(function(response) {
+          return response.data.users;
+        })
+        .catch(function(error) {
+          // handle error
+          console.log(error);
+        });
+    },
+  },
+  created: async function() {
+    this.users = await this.getUsers();
+    console.log(this.users);
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
-  .home-holder {
-    width: calc(380px * 3);
-    margin: 0 auto;
-    padding-top: 60px;
-  }
-  .card-holder {
-    display: flex;
-    justify-content: center;
-  }
-  .login {
-    float: right;
-    margin-top: -130px;
-  }
-  .hero-title {
-    font-size: 5rem;
-    margin: 0;
-  }
-  .sub-title {
-    color: #a0a1a4;
-    font-family: "bitter";
-    font-size: 1.875rem;
-  }
+.home-holder {
+  width: calc(380px * 3);
+  margin: 0 auto;
+  padding-top: 60px;
+  height: 100vh;
+}
+.card-holder {
+  display: flex;
+  justify-content: center;
+}
+.login {
+  float: right;
+  margin-top: -130px;
+}
+.hero-title {
+  font-size: 5rem;
+  margin: 0;
+}
+.sub-title {
+  color: #a0a1a4;
+  font-family: "bitter";
+  font-size: 1.875rem;
+}
 </style>
