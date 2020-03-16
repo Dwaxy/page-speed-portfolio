@@ -177,14 +177,16 @@ li {
   }
   }
 
- 
-
   .chip {
     background-color: $grey;
     border-radius: 20px;
     color: $white;
     padding: $global-gutters / 3 $global-gutters;
     line-height: 2.5em;
+  }
+
+  .subhead {
+    font-family: "Bitter", serif;
   }
 
   .subhead {
