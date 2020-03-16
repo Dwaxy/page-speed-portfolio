@@ -39,7 +39,7 @@
           </div>
         </div>
         <a
-          v-if="project.technologies && project.technologies.length < 6"
+          v-if="project.technologies && project.technologies.length < 10"
           @click="addTechnology"
           class="button"
         >Add Technology</a>
