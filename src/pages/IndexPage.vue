@@ -16,8 +16,8 @@
 
 <script>
 import HomeCard from "../components/home/HomeCard";
-import axios from "axios"
-import * as config from "../../config"
+import getUserDetails from "../services/user-info-provider"
+
 export default {
   name: "IndexPage",
   components: {
@@ -28,21 +28,8 @@ export default {
       users: {}
     };
   },
-  methods: {
-    getUsers: function() {
-      return axios
-        .get(`${config.apiUrl}/users`)
-        .then(function(response) {
-          return response.data.users;
-        })
-        .catch(function(error) {
-          // handle error
-          console.log(error);
-        });
-    },
-  },
   created: async function() {
-    this.users = await this.getUsers();
+    this.users = await getUserDetails.getUsers();
     console.log(this.users);
   }
 };

@@ -6,16 +6,16 @@
     </div>
 
     <div class="mid">
-      <div class="name">{{info.name}}</div>
-      <span class="role">{{info.role}}</span>
+      <div class="name">{{userData.firstName}}</div>
+      <span class="role">{{userData.jobDescription}}</span>
       <div class="links">
-        <a :href="info.email" class="info-link">
+        <a :href="userData.email" class="info-link">
           <font-awesome-icon icon="envelope" class="info-icon" />
         </a>
-        <a :href="info.linkedin" class="info-link">
+        <a :href="userData.linkedin" class="info-link">
           <font-awesome-icon :icon="['fab', 'linkedin']" class="info-icon" />
         </a>
-        <a :href="info.github" class="info-link">
+        <a :href="userData.github" class="info-link">
           <font-awesome-icon :icon="['fab', 'github']" class="info-icon" />
         </a>
       </div>
@@ -29,17 +29,7 @@
 export default {
   name: "Header",
   props: ["userData"],
-  data: function() {
-    return {
-      info: {
-        name: "Joel",
-        role: "Web Developer",
-        email: "",
-        linkedin: "",
-        github: ""
-      }
-    };
-  }
+  
 };
 </script>
 

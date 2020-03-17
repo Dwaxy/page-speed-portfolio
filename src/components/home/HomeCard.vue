@@ -3,7 +3,10 @@
       <img class="profile" :alt="userData.firstName" :src="userData.profileImageUrl">
       <h1 class="name">{{userData.firstName}}</h1>
       <span class="role">{{userData.jobDescription}}</span>
-      <router-link :to="{ name: 'profile', params: { userData: userData } }">View Profile</router-link>
+      <router-link :to="{ 
+        name: 'profile', 
+        params: { user: userData.id } 
+      }">View Profile</router-link>
   </div>
 </template>
 

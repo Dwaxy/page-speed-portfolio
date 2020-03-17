@@ -11,7 +11,7 @@
         <input type="text" name="name" placeholder="Name" v-model="ohNoHoney" class="ohnohoney" />
       </div>
       <div>
-        <input class="submit" type="submit" value="Submit" />
+        <input class="submit" type="submit" value="Login" />
       </div>
     </form>
   </section>

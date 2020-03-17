@@ -1,9 +1,9 @@
 <template>
   <div>
-    <Header userData="userData"/>
+    <Header :userData="info"/>
     <AboutMe />
     <ProjectList />
-    <Footer />
+    <Footer :userData="info"/>
   </div>
 </template>
 
@@ -12,15 +12,24 @@ import AboutMe from "../components/aboutMe/AboutMe.vue";
 import ProjectList from "../components/projectList/ProjectList.vue";
 import Header from "../components/header/Header"
 import Footer from "../components/footer/Footer"
+import getUserDetails from "../services/user-info-provider"
 
 export default {
   name: "ProfilePage",
-  props: ["userData"],
+  
   components: {
     AboutMe,
     ProjectList,
     Header,
     Footer,
+  },
+  data: function() {
+    return {
+      info: {}
+    };
+  },
+  created: async function() {
+    this.info = await getUserDetails.getUser(this.$route.params.user);
   }
 };
 </script>
