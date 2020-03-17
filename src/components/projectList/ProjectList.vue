@@ -110,7 +110,7 @@ ul {
 }
 
 li {
-  margin-bottom: $global-gutters * 2;
+  margin-bottom: $global-gutters * 4;
 }
 
 .projects {
