@@ -57,9 +57,9 @@ export default {
             //show message
           }
 
-          console.log('user', response.data.user);
+          console.log('logged in for user', response.data.user);
           // handle success
-            //   this.$router.push({ path: "/" });
+          this.$router.push({ path: "/" });
         })
         .catch(function(error) {
           // handle error

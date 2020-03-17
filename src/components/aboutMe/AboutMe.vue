@@ -4,10 +4,10 @@
     <div class="about-content">
       <div>
         <h1>About Me</h1>
-        <!-- <span>{{user.bio}}</span> -->
+        <span>{{userData.bio}}</span>
       </div>
       <div>
-        <!-- <img :src="user.profileImage" alt="profile picture" /> -->
+        <img class="profile" :alt="userData.firstName" :src="userData.profileImageUrl">
       </div>
     </div>
     <hr />
@@ -18,7 +18,7 @@
 
 export default {
   name: "AboutMe",
- 
+  props: ["userData"]
 };
 </script>
 

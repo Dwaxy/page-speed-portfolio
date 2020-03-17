@@ -37,8 +37,8 @@
               <router-link
                 :to="{
                 name: 'project',
-                params: {projectId: project.id}
-                
+                params: {projectId: project.id},
+        
               }"
                 class="button"
               >View More</router-link>
@@ -53,14 +53,15 @@
 <script>
 import axios from "axios";
 import * as config from "../../../config";
-
+import * as authService from "../../services/auth-service.js"
 export default {
   name: "ProjectList",
+  props: ["linkHistory"],
   data: function() {
     return {
       projects: [],
       // change to false once log in is all set up
-      isLoggedIn: true
+      isLoggedIn: false
     };
   },
   methods: {
@@ -96,7 +97,7 @@ export default {
   },
   created: async function() {
     this.projects = await this.getProjects();
-    // this.isLoggedIn = authService.isLoggedIn();
+    this.isLogedIn = authService.isLogedIn()
   }
 };
 </script>
