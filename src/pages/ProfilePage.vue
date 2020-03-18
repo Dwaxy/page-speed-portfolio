@@ -1,17 +1,17 @@
 <template>
   <div>
-    <Header/>
+    <Header />
     <AboutMe />
     <ProjectList />
-    <Footer />>
+    <Footer />
   </div>
 </template>
 
 <script>
 import AboutMe from "../components/aboutMe/AboutMe.vue";
 import ProjectList from "../components/projectList/ProjectList.vue";
-import Header from "../components/header/Header"
-import Footer from "../components/footer/Footer"
+import Header from "../components/header/Header";
+import Footer from "../components/footer/Footer";
 
 export default {
   name: "ProfilePage",
@@ -19,7 +19,7 @@ export default {
     AboutMe,
     ProjectList,
     Header,
-    Footer,
+    Footer
   }
 };
 </script>

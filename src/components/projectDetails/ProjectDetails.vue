@@ -15,7 +15,7 @@
           <h2>Project Goals</h2>
           <div class="goals-list">
             <ol>
-              <li v-for="goal in project.goals" :key="goal">{{goal.goal}}</li>
+              <li v-for="goal in project.goals" :key="goal.goal">{{goal.goal}}</li>
             </ol>
           </div>
         </div>
@@ -30,7 +30,7 @@
           <h2>Project Pain Points</h2>
           <div class="pains-list">
             <ol>
-              <li v-for="pain in project.pains" :key="pain">{{pain.pain}}</li>
+              <li v-for="pain in project.pains" :key="pain.pain">{{pain.pain}}</li>
             </ol>
           </div>
         </div>
@@ -138,11 +138,10 @@ ol {
   height: 100%;
 
   img {
-width: 100%;
-      height: 300px;
-      object-fit: cover;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 5px;
   }
-
 }
-
 </style>
