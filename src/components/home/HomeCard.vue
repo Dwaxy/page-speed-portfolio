@@ -6,7 +6,6 @@
       <router-link :to="{ 
         name: 'profile', 
         params: { user: userData.id },
-        props: { linkHistory: '/'}
       }">View Profile</router-link>
   </div>
 </template>

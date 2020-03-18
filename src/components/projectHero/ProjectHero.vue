@@ -239,7 +239,7 @@ export default {
   .subhead {
     font-family: "Bitter", serif;
   }
-}
+
 
 .hero-image {
   position: absolute;

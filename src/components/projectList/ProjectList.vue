@@ -12,7 +12,7 @@
                 v-if="isLoggedIn"
                 :to="{
             name: 'project-editor',
-            params: {projectId: project.id}
+            params: {project: project.id}
           }"
                 class="edit-link"
               >
@@ -37,8 +37,8 @@
               <router-link
                 :to="{
                 name: 'project',
-                params: {projectId: project.id},
-        
+                params: {project: project.id}
+                
               }"
                 class="button"
               >View More</router-link>
@@ -53,15 +53,14 @@
 <script>
 import axios from "axios";
 import * as config from "../../../config";
-import * as authService from "../../services/auth-service.js"
+import * as authService from "../../services/auth-service.js";
 export default {
   name: "ProjectList",
-  props: ["linkHistory"],
   data: function() {
     return {
       projects: [],
       // change to false once log in is all set up
-      isLoggedIn: false
+      isLoggedIn: true
     };
   },
   methods: {
@@ -97,7 +96,7 @@ export default {
   },
   created: async function() {
     this.projects = await this.getProjects();
-    this.isLogedIn = authService.isLogedIn()
+    this.isLoggedIn = authService.isLoggedIn();
   }
 };
 </script>
@@ -109,21 +108,17 @@ export default {
 ul {
   list-style-type: none;
 }
-
 li {
   margin-bottom: $global-gutters * 4;
 }
-
 .projects {
   padding: $global-gutters;
 }
-
 a.edit-link,
 a.delete-link {
   text-decoration: none;
   color: $grey;
 }
-
 .project {
   @media screen and (min-width: $desktop) {
     display: grid;
@@ -131,35 +126,28 @@ a.delete-link {
     grid-column-gap: $global-gutters * 2;
     grid-template-rows: 50px auto;
   }
-
   h1 {
     line-height: 1;
   }
-
   .admin-icon {
     // display: none;
     margin-left: $global-gutters;
     font-size: 1.125rem;
-
     @media screen and (min-width: $tablet) {
       font-size: 1.325rem;
     }
-
     @media screen and (min-width: $desktop) {
       font-size: 1.625rem;
     }
   }
-
   &-header {
     display: flex;
     justify-content: space-between;
-
     @media screen and (min-width: $desktop) {
       grid-column: 2/3;
       grid-row: 1/2;
     }
   }
-
   &-description {
     @media screen and (min-width: $desktop) {
       grid-column: 2/3;
@@ -169,25 +157,21 @@ a.delete-link {
       justify-content: space-between;
     }
   }
-
   &-image {
     margin: 0 0 $global-gutters 0;
     width: 100%;
     height: 100%;
-
     img {
       width: 100%;
       height: 300px;
       object-fit: cover;
     }
-
     @media screen and (min-width: $desktop) {
       grid-column: 1/2;
       grid-row: 1/3;
       margin: 0;
     }
   }
-
   &-button {
     display: flex;
     justify-content: flex-end;

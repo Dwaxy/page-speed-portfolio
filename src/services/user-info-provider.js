@@ -14,6 +14,7 @@ const getUserDetails = {
           });
     },
     getUser: function(userId) {
+        console.log(`getting user for id ${userId}`)
         return axios
           .get(`${config.apiUrl}/users/${userId}`)
           .then(function(response) {
