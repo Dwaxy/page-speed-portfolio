@@ -38,7 +38,8 @@ const routes = [
   {
     path: '/',
     component: IndexPage,
-    name: 'home'
+    name: 'home',
+    props: true
   },
   {
     path: '/profile/:user',

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Header :userData="info"/>
-    <AboutMe />
+    <Header :userData="info" :linkHistory="linkHistory"/>
+    <AboutMe :userData="info"/>
     <ProjectList />
     <Footer :userData="info"/>
   </div>
@@ -16,7 +16,7 @@ import getUserDetails from "../services/user-info-provider"
   
 export default {
   name: "ProfilePage",
-  
+  props: ["linkHistory"],
   components: {
     AboutMe,
     ProjectList,
@@ -25,7 +25,8 @@ export default {
   },
   data: function() {
     return {
-      info: {}
+      info: {},
+
     };
   },
   created: async function() {

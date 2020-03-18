@@ -4,7 +4,9 @@
     <span class="sub-title">Group Portfolio</span>
     <!-- TODO Add login component here -->
     <div class="login">
-      <span>Login</span>
+      <router-link to="/login">
+        Log In
+      </router-link>
     </div>
     <div class="card-holder">
       <div v-for="user in users" :key="user.id">

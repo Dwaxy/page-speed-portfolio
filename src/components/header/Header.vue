@@ -1,8 +1,9 @@
 <template>
   <header>
     <div class="left">
-      <!-- TODO make arrow go back using routs -->
-      <font-awesome-icon icon="chevron-left" class="back-button" />
+      <router-link :to="linkHistory">
+        <font-awesome-icon icon="chevron-left" class="back-button" />
+      </router-link>
     </div>
 
     <div class="mid">
@@ -20,15 +21,27 @@
         </a>
       </div>
     </div>
-    <div class="right"></div>
+    <div class="right">
+      <router-link v-if="!isLogedIn" to="/login">
+        Log In
+      </router-link>
+    </div>
   </header>
 </template>
 
 <script>
-
+import * as authService from "../../services/auth-service.js"
 export default {
   name: "Header",
-  props: ["userData"],
+  props: ["userData", "linkHistory"],
+  data: function() {
+    return {
+      isLoggedIn: false
+    };
+  },
+  created: async function() {
+    this.isLogedIn = authService.isLogedIn();
+  }
   
 };
 </script>
