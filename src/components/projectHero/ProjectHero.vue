@@ -18,7 +18,7 @@
         <span class="subhead">Project built with</span>
         <div>
           <ul>
-            <li v-for="technology in project.technologies" :key="technology">
+            <li v-for="technology in project.technologies" :key="technology.technology">
               <span class="chip">{{technology.technology}}</span>
             </li>
           </ul>
@@ -28,8 +28,12 @@
         <h2>Website Performance Score</h2>
         <span class="subhead">Tested with PageSpeed Insights</span>
         <div class="score-wrapper">
-          <div class="score">
+          <div v-if="project.pageSpeedScore" class="score">
             <span>{{project.pageSpeedScore}}</span>
+          </div>
+          <div v-if="!project.pageSpeedScore" class="loading">
+            <div v-if="!project.pageSpeedScore" class="loader-inner"></div>
+            <span v-if="!project.pageSpeedScore" class="loader">Loading</span>
           </div>
         </div>
         <div class="button-wrapper">
@@ -67,7 +71,7 @@ export default {
     getPageSpeed: function() {
       return axios
         .get(
-          `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://developers.google.com` //add api key
+          `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${this.project.liveSite}`
         )
         .then(response => {
           return response.data.loadingExperience.overall_category;
@@ -76,12 +80,23 @@ export default {
           //handle error
           console.log(error);
         });
+    },
+    updatePageSpeed: async function() {
+      this.project.pageSpeedScore = await this.getPageSpeed();
+      if (this.project.pageSpeedScore === "FAST") {
+        console.log("green");
+      } else if (this.project.pageSpeedScore === "MODERATE") {
+        console.log("orange");
+      } else {
+        console.log("red");
+      }
+      this.$forceUpdate();
     }
   },
   created: async function() {
     const projectId = this.$route.params.projectId;
     this.project = await this.getProject(projectId);
-    this.project.pageSpeedScore = await this.getPageSpeed();
+    this.updatePageSpeed();
   }
 };
 </script>
@@ -100,10 +115,41 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 
   span {
     font-size: 2em;
     color: $white;
+    z-index: 2;
+  }
+}
+
+.loading {
+  height: 10em;
+  width: 10em;
+  border-radius: 50%;
+  background-color: $grey;
+  content: "";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  span {
+    font-size: 2em;
+    color: $white;
+    z-index: 2;
+  }
+
+  .loader-inner {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    height: 8em;
+    width: 8em;
+    background-color: $black;
+    border-radius: 50%;
+    z-index: 1;
   }
 }
 
@@ -166,14 +212,15 @@ export default {
     @media (min-width: $tablet) {
       // grid-template-columns: repeat(4, 1fr);
     }
-li {
-  margin-bottom: $global-gutters /2;
-}
+    li {
+      margin-bottom: $global-gutters / 2;
+    }
 
-     li:not(:last-child) {
-       margin-right: $global-gutters/2;
-    // display: flex;
-    // justify-content: center;
+    li:not(:last-child) {
+      margin-right: $global-gutters/2;
+      // display: flex;
+      // justify-content: center;
+    }
   }
   }
 
@@ -208,18 +255,18 @@ li {
 
   .overlay {
     background-color: rgba(0, 0, 0, 0.5);
-     width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 
   img {
-     width: 100%;
-     min-height: 300px;
-      height: 100%;
-      object-fit: cover;
+    width: 100%;
+    min-height: 300px;
+    height: 100%;
+    object-fit: cover;
   }
 }
 
@@ -255,5 +302,8 @@ li {
     display: flex;
     justify-content: center;
   }
+}
+
+.loader-inner {
 }
 </style>
