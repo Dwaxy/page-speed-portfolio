@@ -222,6 +222,7 @@ export default {
       // justify-content: center;
     }
   }
+  }
 
   .chip {
     background-color: $grey;
