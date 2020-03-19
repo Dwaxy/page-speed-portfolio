@@ -18,7 +18,7 @@ import ProfilePage from '../src/pages/ProfilePage.vue';
 import ProjectPage from '../src/pages/ProjectPage.vue';
 import ProjectEditorPage from '../src/pages/ProjectEditorPage.vue';
 import AccountPage from '../src/pages/AccoutPage.vue';
-import LogIn from '../src/pages/LogIn'
+import LogIn from '../src/pages/LogIn';
 
 Vue.config.productionTip = false;
 
@@ -57,11 +57,13 @@ const routes = [
     name: 'home'
   },
   {
+    //path: '/users/:userId what it should be
     path: '/profile',
     component: ProfilePage,
     name: 'profile'
   },
   {
+    // path: '/projects/:projectId/' what it should be
     path: '/profile/:projectId',
     component: ProjectPage,
     props: true, //this enables route params

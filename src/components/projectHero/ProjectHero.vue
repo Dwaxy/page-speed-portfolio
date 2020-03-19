@@ -28,26 +28,22 @@
         <h2>Website Performance Score</h2>
         <span class="subhead">Tested with PageSpeed Insights</span>
         <div class="score-wrapper">
-          <div v-if="project.pageSpeedScore" class="score">
-            <span>{{project.pageSpeedScore}}</span>
-          </div>
-          <div v-if="!project.pageSpeedScore" class="loading">
-            <div v-if="!project.pageSpeedScore" class="loader-inner"></div>
-            <span v-if="!project.pageSpeedScore" class="loader">Loading</span>
+          <div class="score" ref="score">
+            <span v-if="project.pageSpeedScore">{{project.pageSpeedScore}}</span>
+            <span v-if="!project.pageSpeedScore">Loading</span>
+            <div class="score-inner"></div>
           </div>
         </div>
         <div class="button-wrapper">
-          <a href="#" class="button">View Live Site</a>
+          <a :href="project.liveSite" target="_blank" class="button">View Live Site</a>
         </div>
       </div>
     </section>
   </div>
 </template>
-
 <script>
 import axios from "axios";
 import * as config from "../../../config";
-
 export default {
   name: "ProjectHero",
   data: function() {
@@ -83,14 +79,14 @@ export default {
     },
     updatePageSpeed: async function() {
       this.project.pageSpeedScore = await this.getPageSpeed();
-      if (this.project.pageSpeedScore === "FAST") {
-        console.log("green");
-      } else if (this.project.pageSpeedScore === "MODERATE") {
-        console.log("orange");
-      } else {
-        console.log("red");
-      }
       this.$forceUpdate();
+      if (this.project.pageSpeedScore === "FAST") {
+        this.$refs.score.classList.add("green");
+      } else if (this.project.pageSpeedScore === "AVERAGE") {
+        this.$refs.score.classList.add("orange");
+      } else if (this.project.pageSpeedScore === "SLOW") {
+        this.$refs.score.classList.add("red");
+      }
     }
   },
   created: async function() {
@@ -100,31 +96,11 @@ export default {
   }
 };
 </script>
-
 <style lang="scss" scoped>
 // Global variables
 @import "../../lib/vars.scss";
-
 // Scoped styles
 .score {
-  height: 10em;
-  width: 10em;
-  border-radius: 50%;
-  background-color: $green;
-  content: "";
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-
-  span {
-    font-size: 2em;
-    color: $white;
-    z-index: 2;
-  }
-}
-
-.loading {
   height: 10em;
   width: 10em;
   border-radius: 50%;
@@ -134,37 +110,41 @@ export default {
   justify-content: center;
   align-items: center;
   position: relative;
-
   span {
     font-size: 2em;
     color: $white;
     z-index: 2;
   }
-
-  .loader-inner {
-    position: absolute;
-    top: 10%;
-    left: 10%;
-    height: 8em;
-    width: 8em;
-    background-color: $black;
-    border-radius: 50%;
-    z-index: 1;
-  }
 }
-
+.score-inner {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  height: 8em;
+  width: 8em;
+  background-color: $black;
+  border-radius: 50%;
+  z-index: 1;
+}
 .score-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: $global-gutters 0;
 }
-
+.green {
+  background-color: $green;
+}
+.orange {
+  background-color: $orange;
+}
+.red {
+  background-color: $red;
+}
 .technologies-used,
 .page-speed {
   padding: $global-gutters;
 }
-
 .page-speed {
   h2 {
     margin-bottom: $global-gutters/4;
@@ -178,7 +158,6 @@ export default {
   z-index: 1;
   overflow: hidden;
 }
-
 .technologies-used {
   position: relative;
   &:after {
@@ -204,42 +183,35 @@ export default {
     // grid-gap: $global-gutters;
     overflow-y: scroll;
     padding: $global-gutters 0;
-
     &::-webkit-scrollbar {
       display: none;
     }
-
     @media (min-width: $tablet) {
       // grid-template-columns: repeat(4, 1fr);
     }
     li {
       margin-bottom: $global-gutters / 2;
     }
-
     li:not(:last-child) {
       margin-right: $global-gutters/2;
       // display: flex;
       // justify-content: center;
     }
   }
-
-  .chip {
-    background-color: $grey;
-    border-radius: 20px;
-    color: $white;
-    padding: $global-gutters / 3 $global-gutters;
-    line-height: 2.5em;
-  }
-
-  .subhead {
-    font-family: "Bitter", serif;
-  }
-
-  .subhead {
-    font-family: "Bitter", serif;
-  }
 }
-
+.chip {
+  background-color: $grey;
+  border-radius: 20px;
+  color: $white;
+  padding: $global-gutters / 3 $global-gutters;
+  line-height: 2.5em;
+}
+.subhead {
+  font-family: "Bitter", serif;
+}
+.subhead {
+  font-family: "Bitter", serif;
+}
 .hero-image {
   position: absolute;
   top: 0;
@@ -251,7 +223,6 @@ export default {
   margin: 0;
   padding: 0;
   z-index: 1;
-
   .overlay {
     background-color: rgba(0, 0, 0, 0.5);
     width: 100%;
@@ -260,7 +231,6 @@ export default {
     top: 0;
     left: 0;
   }
-
   img {
     width: 100%;
     min-height: 300px;
@@ -268,26 +238,21 @@ export default {
     object-fit: cover;
   }
 }
-
 .hero {
   position: relative;
   z-index: 5;
   padding: $global-gutters;
-
   p {
     color: $white;
   }
-
   &-content {
     max-width: 45rem;
     width: auto;
-
     @media (min-width: $desktop) {
       max-width: calc(75rem / 2);
     }
   }
 }
-
 .technologies {
   @media (min-width: $desktop) {
     display: grid;
@@ -295,14 +260,12 @@ export default {
     grid-gap: $global-gutters;
   }
 }
-
 .button-wrapper {
   @media (min-width: $desktop) {
     display: flex;
     justify-content: center;
   }
 }
-
 .loader-inner {
 }
 </style>

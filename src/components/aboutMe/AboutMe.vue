@@ -31,7 +31,6 @@ export default {
     //     .get(`${config.apiUrl}/users/${userId}`)
     //     .then(response => {
     //       //handle success
-    //       console.log(response);
     //       return response.data.user;
     //     })
     //     .catch(function(error) {
