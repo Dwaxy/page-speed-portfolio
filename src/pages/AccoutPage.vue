@@ -27,7 +27,7 @@
 
                 <div class="education-job-desc">
                     <input type="text" class="input" placeholder="Education Provider" v-model="formData.education">
-                    <input type="text" class="input" placeholder="Job Description" v-model="formData.jobDesc">
+                    <input type="text" class="input" placeholder="Job Description" v-model="formData.jobDescription">
                 </div>
 
                 <div class="links">
@@ -35,6 +35,7 @@
                     <input type="text" class="input" placeholder="LinkedIn" v-model="formData.linkedin">
                     <input type="text" class="input" placeholder="GitHub" v-model="formData.github">
                 </div>
+                <input type="text" class="input" placeholder="Image Link" v-model="formData.profileImageUrl">
                 <input type="submit" value="submit">
             </form>
         </div>
@@ -55,7 +56,8 @@ export default {
                 lastName: "",
                 bio: "",
                 education: "",
-                jobDesc: "",
+                jobDescription: "",
+                profileImageUrl: "",
                 links: {
                     email: "",
                     github: "",

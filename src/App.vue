@@ -59,6 +59,13 @@ h2 {
   }
 }
 
+a {
+  color: $white;
+  text-decoration: none;
+  font-family: "Source Sans Pro", serif;
+  font-weight: bold;
+}
+
 p,
 span,
 ol {

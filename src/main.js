@@ -4,15 +4,8 @@ import VueRouter from 'vue-router';
 import VueResource from 'vue-resource';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import {
-  faEdit,
-  faTrashAlt,
-  faArrowLeft,
-  faArrowRight,
-  faEnvelope,
-  faChevronLeft
-} from '@fortawesome/free-solid-svg-icons';
-import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faEdit, faTrashAlt, faArrowLeft, faArrowRight, faEnvelope, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import IndexPage from '../src/pages/IndexPage.vue';
 import ProfilePage from '../src/pages/ProfilePage.vue';
 import ProjectPage from '../src/pages/ProjectPage.vue';
@@ -23,16 +16,7 @@ import LogIn from '../src/pages/LogIn';
 Vue.config.productionTip = false;
 
 //import required font awesome icons and add them to the library
-library.add(
-  faEdit,
-  faTrashAlt,
-  faArrowLeft,
-  faArrowRight,
-  faGithub,
-  faLinkedin,
-  faEnvelope,
-  faChevronLeft
-);
+library.add(faEdit, faTrashAlt, faArrowLeft, faArrowRight, faGithub, faLinkedin, faEnvelope, faChevronLeft);
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
@@ -54,17 +38,27 @@ const routes = [
   {
     path: '/',
     component: IndexPage,
-    name: 'home'
+    name: 'home',
+    props: true
   },
   {
+<<<<<<< HEAD
+    path: '/profile/:user',
+=======
     //path: '/users/:userId what it should be
     path: '/profile',
+>>>>>>> 0d07a16308957ef5718142ed1e6af337c0f5c14c
     component: ProfilePage,
-    name: 'profile'
+    name: 'profile',
+    props: true
   },
   {
+<<<<<<< HEAD
+    path: '/profile/:project',
+=======
     // path: '/projects/:projectId/' what it should be
     path: '/profile/:projectId',
+>>>>>>> 0d07a16308957ef5718142ed1e6af337c0f5c14c
     component: ProjectPage,
     props: true, //this enables route params
     name: 'project'

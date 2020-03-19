@@ -1,22 +1,25 @@
 <template>
   <div class="home-card">
-      <img class="profile" :alt="userData.name" :src="userData.imageUrl">
-      <h1 class="name">{{userData.name}}</h1>
-      <span class="role">{{userData.role}}</span>
-      <a href="">View Profile</a>
+      <img class="profile" :alt="userData.firstName" :src="userData.profileImageUrl">
+      <h1 class="name">{{userData.firstName}}</h1>
+      <span class="role">{{userData.jobDescription}}</span>
+      <router-link :to="{ 
+        name: 'profile', 
+        params: { user: userData.id },
+      }">View Profile</router-link>
   </div>
 </template>
 
 <script>
 export default {
   name: "HomeCard",
-  props: ["userData"]
+  props: ["userData"],
 }
 </script>
 
 <style lang="scss" scoped>
-$global-gutters: 1.5rem;
- .home-card {
+  $global-gutters: 1.5rem;
+  .home-card {
     width: 300px;
     background-color: white;
     margin: 60px;
@@ -42,5 +45,5 @@ $global-gutters: 1.5rem;
     a {
       margin-bottom: 30px
     }
- }
+  }
 </style>

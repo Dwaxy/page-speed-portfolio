@@ -4,10 +4,10 @@
     <div class="about-content">
       <div>
         <h1>About Me</h1>
-        <!-- <span>{{user.bio}}</span> -->
+        <span>{{userData.bio}}</span>
       </div>
       <div>
-        <!-- <img :src="user.profileImage" alt="profile picture" /> -->
+        <img class="profile" :alt="userData.firstName" :src="userData.profileImageUrl">
       </div>
     </div>
     <hr />
@@ -15,11 +15,12 @@
 </template>
 
 <script>
-// import axios from "axios";
-// import * as config from "../../../config";
 
 export default {
   name: "AboutMe",
+<<<<<<< HEAD
+  props: ["userData"]
+=======
   data: function() {
     return {
       user: {}
@@ -43,6 +44,7 @@ export default {
     const userId = this.$route.params.userId;
     this.user = await this.getUser(userId);
   }
+>>>>>>> 0d07a16308957ef5718142ed1e6af337c0f5c14c
 };
 </script>
 

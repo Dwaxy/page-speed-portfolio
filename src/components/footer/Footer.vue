@@ -25,7 +25,9 @@
       </div>
       <!-- TODO Log in / sign up link -->
       <div class="login-buttons">
-        <div>Log in or Sign Up</div>
+        <div>
+          <router-link to="/login">Log In </router-link> or <router-link to="/signup"> Sign Up</router-link>
+      </div>
       </div>
       <span class="copy">Copyright 2020</span>
     </div>
