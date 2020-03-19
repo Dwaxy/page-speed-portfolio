@@ -42,7 +42,6 @@ const routes = [
     props: true
   },
   {
-    //path: '/users/:userId what it should be
     path: '/profile/:user',
     component: ProfilePage,
     name: 'profile',

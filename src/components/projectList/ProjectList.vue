@@ -53,7 +53,7 @@
 <script>
 import axios from "axios";
 import * as config from "../../../config";
-import * as authService from "../../services/auth-service.js";
+// import * as authService from "../../services/auth-service.js";
 export default {
   name: "ProjectList",
   data: function() {
@@ -64,18 +64,18 @@ export default {
     };
   },
   methods: {
-    getProjects: function() {
-      return axios
-        .get(`${config.apiUrl}/projects`)
-        .then(response => {
-          //handle success
-          return response.data.projects;
-        })
-        .catch(function(error) {
-          //handle error
-          console.log(error);
-        });
-    },
+    // getProjects: function() {
+    //   return axios
+    //     .get(`${config.apiUrl}/projects`)
+    //     .then(response => {
+    //       //handle success
+    //       return response.data.projects;
+    //     })
+    //     .catch(function(error) {
+    //       //handle error
+    //       console.log(error);
+    //     });
+    // },
     getUserProjects: function(userId) {
       return axios
         .get(`${config.apiUrl}/${userId}/projects`)
@@ -107,9 +107,9 @@ export default {
     }
   },
   created: async function() {
-    this.projects = await this.getProjects();
-    // const userId = this.$route.params.userId; what it needs to be
-    // this.projects = await this.getUserProjects(userId); what it needs to be
+    // this.projects = await this.getProjects();
+    const userId = this.$route.params.user; 
+    this.projects = await this.getUserProjects(userId);
   }
 };
 </script>
