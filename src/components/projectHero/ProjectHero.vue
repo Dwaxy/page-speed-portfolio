@@ -33,6 +33,10 @@
             <span v-if="!project.pageSpeedScore">Loading</span>
             <div class="score-inner"></div>
           </div>
+          <div v-if="!project.pageSpeedScore" class="loading">
+            <div v-if="!project.pageSpeedScore" class="loader-inner"></div>
+            <span v-if="!project.pageSpeedScore" class="loader">Loading</span>
+          </div>
         </div>
         <div class="button-wrapper">
           <a :href="project.liveSite" target="_blank" class="button">View Live Site</a>
@@ -265,7 +269,5 @@ export default {
     display: flex;
     justify-content: center;
   }
-}
-.loader-inner {
 }
 </style>
