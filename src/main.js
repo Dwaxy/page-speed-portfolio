@@ -11,7 +11,7 @@ import ProfilePage from '../src/pages/ProfilePage.vue';
 import ProjectPage from '../src/pages/ProjectPage.vue';
 import ProjectEditorPage from '../src/pages/ProjectEditorPage.vue';
 import AccountPage from '../src/pages/AccoutPage.vue';
-import LogIn from '../src/pages/LogIn'
+import LogIn from '../src/pages/LogIn';
 
 Vue.config.productionTip = false;
 
@@ -42,13 +42,23 @@ const routes = [
     props: true
   },
   {
+<<<<<<< HEAD
     path: '/profile/:user',
+=======
+    //path: '/users/:userId what it should be
+    path: '/profile',
+>>>>>>> 0d07a16308957ef5718142ed1e6af337c0f5c14c
     component: ProfilePage,
     name: 'profile',
     props: true
   },
   {
+<<<<<<< HEAD
     path: '/profile/:project',
+=======
+    // path: '/projects/:projectId/' what it should be
+    path: '/profile/:projectId',
+>>>>>>> 0d07a16308957ef5718142ed1e6af337c0f5c14c
     component: ProjectPage,
     props: true, //this enables route params
     name: 'project'

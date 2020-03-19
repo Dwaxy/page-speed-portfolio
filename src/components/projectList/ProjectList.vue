@@ -76,6 +76,18 @@ export default {
           console.log(error);
         });
     },
+    getUserProjects: function(userId) {
+      return axios
+        .get(`${config.apiUrl}/${userId}/projects`)
+        .then(response => {
+          //handle success
+          return response.data.projects;
+        })
+        .catch(function(error) {
+          //handle error
+          console.log(error);
+        });
+    },
     deleteProject: function(projectId) {
       return axios
         .delete(`${config.apiUrl}/projects/${projectId}`)
@@ -96,7 +108,8 @@ export default {
   },
   created: async function() {
     this.projects = await this.getProjects();
-    this.isLoggedIn = authService.isLoggedIn();
+    // const userId = this.$route.params.userId; what it needs to be
+    // this.projects = await this.getUserProjects(userId); what it needs to be
   }
 };
 </script>

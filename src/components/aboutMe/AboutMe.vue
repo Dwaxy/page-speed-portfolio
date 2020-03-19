@@ -18,7 +18,33 @@
 
 export default {
   name: "AboutMe",
+<<<<<<< HEAD
   props: ["userData"]
+=======
+  data: function() {
+    return {
+      user: {}
+    };
+  },
+  methods: {
+    // getUser: function(userId) {
+    //   return axios
+    //     .get(`${config.apiUrl}/users/${userId}`)
+    //     .then(response => {
+    //       //handle success
+    //       return response.data.user;
+    //     })
+    //     .catch(function(error) {
+    //       //handle error
+    //       console.log(error);
+    //     });
+    // }
+  },
+  created: async function() {
+    const userId = this.$route.params.userId;
+    this.user = await this.getUser(userId);
+  }
+>>>>>>> 0d07a16308957ef5718142ed1e6af337c0f5c14c
 };
 </script>
 
